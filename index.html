@@ -51,16 +51,18 @@
         }
 
         .gift-options {
-            display: none;
+            visibility: hidden;
             position: absolute;
-            top: 0;
+            bottom: 120%;
             left: 50%;
             transform: translateX(-50%);
             z-index: 1;
+            display: flex;
+            justify-content: center;
         }
 
         .gift-options a {
-            display: block;
+            display: inline-block;
             margin: 5px;
             padding: 10px;
             font-size: 1em;
@@ -73,6 +75,36 @@
 
         .gift-options a:hover {
             background-color: #ff4b3a;
+        }
+
+        .link-button {
+            display: inline-block;
+            margin: 20px;
+            padding: 15px 30px;
+            font-size: 1em;
+            color: white;
+            background-color: #ff6f61;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .link-button:hover {
+            background-color: #ff4b3a;
+        }
+
+        .mute-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+            transition: transform 0.5s ease;
+        }
+
+        @keyframes rotate {
+            100% {
+                transform: rotate(360deg);
+            }
         }
     </style>
 </head>
@@ -93,19 +125,43 @@
         <a href="https://star-finder.starregistration.net/?q=8EC1E9C13" class="link-button" target="_blank">查看你的星星</a>
     </div>
 
+    <img src="assets/volume.png" alt="Mute" class="mute-button" id="muteButton">
+
+    <audio id="backgroundMusic" loop>
+        <source src="assets/groupies.mp4" type="audio/mp4">
+        Your browser does not support the audio element.
+    </audio>
+
     <script>
-        document.getElementById('giftContainer').addEventListener('click', function() {
+        document.getElementById('giftContainer').addEventListener('click', function () {
             var giftIcon = document.getElementById('giftIcon');
             var giftOptions = document.getElementById('giftOptions');
 
-            if (giftOptions.style.display === 'block') {
-                giftOptions.style.display = 'none';
+            if (giftOptions.style.visibility === 'visible') {
+                giftOptions.style.visibility = 'hidden';
                 giftIcon.src = 'assets/gift_box.png';
                 giftIcon.style.transform = 'scale(1)';
             } else {
-                giftOptions.style.display = 'block';
+                giftOptions.style.visibility = 'visible';
                 giftIcon.src = 'assets/open_gift_box.png';
                 giftIcon.style.transform = 'scale(1.2)';
+            }
+        });
+
+        var backgroundMusic = document.getElementById('backgroundMusic');
+        var muteButton = document.getElementById('muteButton');
+
+        backgroundMusic.play();
+
+        muteButton.addEventListener('click', function () {
+            if (backgroundMusic.muted) {
+                backgroundMusic.muted = false;
+                muteButton.src = 'assets/volume.png';
+                muteButton.classList.add('rotating');
+            } else {
+                backgroundMusic.muted = true;
+                muteButton.src = 'assets/mute.png';
+                muteButton.classList.remove('rotating');
             }
         });
     </script>
