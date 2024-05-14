@@ -95,16 +95,19 @@
 
         .mute-button {
             position: absolute;
-            top: 20px;
-            right: 20px;
+            top: 10px;
+            right: 10px;
+            width: 30px;
+            height: 30px;
             cursor: pointer;
             transition: transform 0.5s ease;
         }
 
-        @keyframes rotate {
-            100% {
-                transform: rotate(360deg);
-            }
+        .flex-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
         }
     </style>
 </head>
@@ -112,23 +115,25 @@
 <body>
     <div class="container">
         <h1>AOAO！生日快乐!</h1>
-        <p>祝你每天开心 </p>
+        <p>生活缝缝补补 愿你每天开心</p>
         <p class="message">即使前方会有黑暗，这颗星也会为你照明。</p>
-        <div class="gift-container" id="giftContainer">
-            <img src="assets/gift_box.png" alt="Gift" class="gift-icon" id="giftIcon">
-            <div class="gift-options" id="giftOptions">
-                <a href="assets/certificate.pdf" target="_blank">Certificate</a>
-                <a href="assets/star_map.pdf" target="_blank">Star Map</a>
-                <a href="assets/confirmationLetter.pdf" target="_blank">Confirmation Letter</a>
+        <div class="flex-container">
+            <div class="gift-container" id="giftContainer">
+                <img src="assets/gift_box.png" alt="Gift" class="gift-icon" id="giftIcon">
+                <div class="gift-options" id="giftOptions">
+                    <a href="assets/certificate.pdf" target="_blank">Certificate</a>
+                    <a href="assets/star_map.pdf" target="_blank">Star Map</a>
+                    <a href="assets/confirmationLetter.pdf" target="_blank">Confirmation Letter</a>
+                </div>
             </div>
+            <a href="https://star-finder.starregistration.net/?q=8EC1E9C13" class="link-button" target="_blank">查看你的星星</a>
         </div>
-        <a href="https://star-finder.starregistration.net/?q=8EC1E9C13" class="link-button" target="_blank">查看你的星星</a>
     </div>
 
     <img src="assets/volume.png" alt="Mute" class="mute-button" id="muteButton">
 
     <audio id="backgroundMusic" loop>
-        <source src="assets/groupies.mp4" type="audio/mp4">
+        <source src="assets/groupies.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
 
@@ -157,11 +162,9 @@
             if (backgroundMusic.muted) {
                 backgroundMusic.muted = false;
                 muteButton.src = 'assets/volume.png';
-                muteButton.classList.add('rotating');
             } else {
                 backgroundMusic.muted = true;
                 muteButton.src = 'assets/mute.png';
-                muteButton.classList.remove('rotating');
             }
         });
     </script>
