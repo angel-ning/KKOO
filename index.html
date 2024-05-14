@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Kelly!</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #ffecd2, #fcb69f);
+            text-align: center;
+            padding: 50px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #ff6f61;
+        }
+
+        p {
+            font-size: 1.2em;
+            color: #333;
+            margin: 20px 0;
+        }
+
+        .message {
+            font-size: 1.5em;
+            color: #555;
+            margin: 30px 0;
+        }
+
+        .gift-container {
+            position: relative;
+            display: inline-block;
+            margin: 20px;
+            cursor: pointer;
+        }
+
+        .gift-icon {
+            width: 100px;
+            transition: transform 0.5s ease;
+        }
+
+        .gift-options {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+        }
+
+        .gift-options a {
+            display: block;
+            margin: 5px;
+            padding: 10px;
+            font-size: 1em;
+            color: white;
+            background-color: #ff6f61;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .gift-options a:hover {
+            background-color: #ff4b3a;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>AOAO！生日快乐!</h1>
+        <p>祝你每天开心 </p>
+        <p class="message">即使前方会有黑暗，这颗星也会为你照明。</p>
+        <div class="gift-container" id="giftContainer">
+            <img src="assets/gift_closed.png" alt="Gift" class="gift-icon" id="giftIcon">
+            <div class="gift-options" id="giftOptions">
+                <a href="assets/certificate.pdf" target="_blank">Certificate</a>
+                <a href="assets/star_map.pdf" target="_blank">Star Map</a>
+                <a href="assets/confirmationLetter.pdf" target="_blank">Confirmation Letter</a>
+            </div>
+        </div>
+        <a href="https://star-finder.starregistration.net/?q=8EC1E9C13" class="link-button" target="_blank">查看你的星星</a>
+    </div>
+
+    <script>
+        document.getElementById('giftContainer').addEventListener('click', function() {
+            var giftIcon = document.getElementById('giftIcon');
+            var giftOptions = document.getElementById('giftOptions');
+
+            if (giftOptions.style.display === 'block') {
+                giftOptions.style.display = 'none';
+                giftIcon.src = 'assets/gift_box.png';
+                giftIcon.style.transform = 'scale(1)';
+            } else {
+                giftOptions.style.display = 'block';
+                giftIcon.src = 'assets/open_gift_box.png';
+                giftIcon.style.transform = 'scale(1.2)';
+            }
+        });
+    </script>
+</body>
+
+</html>
