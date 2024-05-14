@@ -156,7 +156,9 @@
         var backgroundMusic = document.getElementById('backgroundMusic');
         var muteButton = document.getElementById('muteButton');
 
-        backgroundMusic.play();
+        document.body.addEventListener('click', function () {
+            backgroundMusic.play();
+        }, {once: true}); 
 
         muteButton.addEventListener('click', function () {
             if (backgroundMusic.muted) {
